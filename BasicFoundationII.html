@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basic Foundation II</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		//1. Biggie Size - Given an array, write a function that changes all positive numbers in the array to "big".  Example: makeItBig([-1,3,5,-5]) returns that same array, changed to [-1, "big", "big", -5].
+
+		var arr = [19,20,5,-6,-7];
+		function biggieSize(arr){
+			for(var t=0; t<arr.length; t++){
+				if(arr[t]>0){
+					arr[t] = 'big'
+				}
+			}
+			return arr;
+		}
+		console.log(biggieSize(arr));
+
+		//2. Print Low, Return High - Create a function that takes array of numbers.  The function should print the lowest value in the array, and return the highest value in the array.
+
+		var arr = [0,9,-20,58,3];
+		function lowHigh(arr){
+			for(var t=0; t<arr.length; t++){
+				if(arr[t]<=-20){
+					console.log("The lowest value in this array is" + " " + arr[t])
+				}
+				if(arr[t]>=58){
+					return arr[t];
+				}
+			}
+		}
+		console.log(lowHigh(arr));
+
+		//3.Print One, Return Another - Build a function that takes array of numbers.  The function should print second-to-last value in the array, and return first odd value in the array.
+
+		var arr = [1,3,5,8];
+		function printReturn(arr){
+			console.log(arr[arr.length-2]);		//grabs the second to last value of every array given.
+			for(var m=0; m<arr.length; m++){
+				if(arr[m] % 2 == 1){			//or you can say (arr[m] % 2 != 0)		
+					return arr[m];
+				}
+			}
+		}
+		console.log(printReturn(arr));
+
+		//4.Double Vision - Given array, create a function to return a new array where each value in the original has been doubled.  Calling double([1,2,3]) should return [2,4,6] without changing original.
+
+
+		var arr = [19,18,17,16];
+		function returnNewArr(arr){
+			var newArr = [];
+			for(var m=0; m<arr.length; m++){
+				var double = arr[m]*2;
+				newArr.push(double);
+			}
+			return newArr;
+		}
+		console.log(returnNewArr(arr));
+
+		//5.Count Positives - Given array of numbers, create function to replace last value with number of positive values.  Example, countPositives([-1,1,1,1]) changes array to [-1,1,1,3] and returns it
+
+		var arr = [-52,42,32,22];
+		function countPositive(arr){
+			var sum = 0;
+			for(var m=0; m<arr.length; m++){
+				if(arr[m]>0){
+					sum+=1;			//adds 1 to the sum each time arr[m] is a positive number.
+				}
+			}
+			arr.pop();				//pops the last number in arr.
+			arr.push(sum);			//pushes the sum into the last index in the array. 			
+			return arr;
+		}
+		console.log(countPositive(arr));
+
+		//6.Evens and Odds - Create a function that accepts an array.  Every time that array has three odd values in a row, print "That's odd!".  Every time the array has three evens in a row, print "Even more so!"
+
+		var arr = [50,2,10,-99,-20,-1,3,-3,3];
+		function evenOdd(arr){
+			var even = 0;
+			var odd = 0;
+			for(var m=0; m<arr.length; m++){
+				if(arr[m] % 2 == 0){		//says if arr of m is even 
+					even+=1;				//makes counter(even) add how many times the num was even in a row
+					odd=0;					//keeps odd count at zero
+				}
+					if(even == 3){
+						console.log("Even more so!");
+						even=0;					//sets even back to zero so that even won't count past 3.
+					}
+				else(arr[m] % 2 != 0){		//says arr of m is odd
+					odd+=1;					//makes counter(odd) adds how many times the num was odd in a row. 
+					even=0;					//sets even count to zero
+				}
+					else(odd == 3){
+						console.log("That's odd!");
+						odd=0;					//sets odd back to zero so that it won't count past 3.
+					}
+			}
+
+		}
+		evenOdd(arr);
+
+		//7.Increment the Seconds - Given an array of numbers arr, add 1 to every second element, specifically those whose index is odd (arr[1], [3], [5], etc).  Afterward. console.log each array value and return arr.
+
+		var arr = [19,3,87,6];
+		function addSeconds(arr){
+			for (var m=0; m<arr.length; m++){
+				if(m % 2 != 0){					//checks if indexer m is odd
+					if(arr[m] % 2 != 0){		//then checks if arr of m is odd and if so 
+					arr[m]+=+1;					//takes arr of m and saves it to arra of m plus 1
+					console.log(arr[m]);		//then logs the new value of arr of m.
+					}
+				}
+			}
+
+		}
+		addSeconds(arr);
+
+
+		//8.Previous Lengths - You are passed an array containing strings.  Working within that same array, replace each string with a number - the length of the string at previous array index - and return the array.
+
+		var arrStrings = ["Mario","Link","Samus","DonkeyKong"];
+		function previousLength(arr){
+			for(var m=0; m<arr.length; m++){
+				if(typeOf(arrStrings) == 'string'){
+					var numlength = arrStrings[m].length;
+					arr[m] = arr[m].length 		//arrStrings gets changed to parameter(arr) when it enters the function. 
+				}								//uses str.length on the string. 
+			}
+			return arrStrings;
+		}
+		console.log(previousLength(arrStrings));
+
+		//9. Add Seven to Most - Build function that accepts array. Return a new array with all values except first, adding 7 to each. Do not alter the original array.
+
+		
+		var arr = [19,36,1000,56,97];
+		function sevenMost(arr){
+			var newArr = [];
+			for(var v=0; v<arr.length; v++){
+				if(v != 0){
+					var plusSeven = arr[v]+7;
+					newArr.push(plusSeven);
+				}
+			}
+			return newArr;
+		}
+		console.log(sevenMost(arr));
+
+		//10.Reverse Array - Given an array, write a function that reverses values, in-place.  Example: reverse([3,1,6,4,2]) return same array, containing [2,4,6,1,3].  Do this without creating an empty temporary array.  (Hint: you'll need to swap values).
+
+			var arr = [66,77,88,33];
+		function reverseArray(arr){
+			arr.reverse();			//No need for a loop here. Just a method to reverse any array.
+			console.log(arr);
+		}
+		reverseArray(arr);
+
+		//11.Outlook: Negative - Given an array, create and return a new one containing all the values of the provided array, made negative (not simply multiplied by -1). Given [1,-3,5], return [-1,-3,-5].
+
+		var arr = [-3,6,8,-2,-3];
+		function makeNegative(arr){
+			var newArr = [];
+			for(var m=0; m<arr.length; m++){
+				if(arr[m]<0){
+					newArr.push(-arr[m]);
+				}
+					else if(arr[m]>0){
+					newArr.push(arr[m]);
+				}
+			}
+			return newArr;
+		}
+		console.log(makeNegative(arr));
+
+		//12. Always Hungry - Create a function that accepts an array, and prints "yummy" each time one of the values is equal to "food".  If no array elements are "food", then print "I'm hungry" once.
+
+		var arr = ["food","food","food",34,227];
+		function alwaysHungry(arr){
+			for(var m=0; m<arr.length; m++){
+					if(arr[m] == "food"){
+						console.log("yummy");
+					}
+					if(arr[m] != "food"){
+						console.log("I'm hungry");
+						break;
+					}				
+			}
+		}
+		alwaysHungry(arr);
+
+		//13.Swap Toward the Center - Given array, swap first and last, third and third-to-last, etc.  Input[true,42,"Ada",2,"pizza"] becomes ["pizza", 42, "Ada", 2, true].  Change [1,2,3,4,5,6] to [6,2,4,3,5,1].
+
+		var arr = [1,2,3,4,5,6];
+		function swapTowardCenter(arr){
+			for(var m=0; m<arr.length; m++){
+				if(m==0){
+					var temp = arr[0];
+					arr[0] = arr[5];
+					arr[5] = temp;
+				}
+				if(m==2){
+					var temp = arr[2];
+					arr[2] = arr[3];
+					arr[3] = temp;
+				}
+			}
+			return arr;
+		}
+		console.log(swapTowardCenter(arr));
+
+		//14.Scale the Array - Given an array arr and a number num, multiply all values in arr by num, and return the changed array arr.  For example, scaleArray([1,2,3],3) should return [3,6,9].
+
+		var arr = [5,10,20]
+		function scaleArray(arr, num){
+			for(var m=0; m<arr.length; m++){
+				arr[m] = arr[m]*num;
+			}
+			return arr;
+		}
+		console.log(scaleArray(arr,2));
+
+		
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>
